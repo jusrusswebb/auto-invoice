@@ -48,16 +48,16 @@ class ClientController extends Controller
 
     public function destroy($id)
     {
-        // Find the client or fail
+        
         $client = Client::findOrFail($id);
 
-        // Delete all related invoices and services
+        
         foreach ($client->invoices as $invoice) {
-            $invoice->services()->delete(); // Delete all services for this invoice
-            $invoice->delete();             // Delete the invoice itself
+            $invoice->services()->delete(); 
+            $invoice->delete();             
         }
 
-        // Finally, delete the client
+        
         $client->delete();
 
         return redirect()->route('client-dashboard')->with('success', 'Client and associated data deleted successfully.');

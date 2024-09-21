@@ -12,8 +12,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('auth');
-
 Route::get('/add-client', [ClientController::class, 'create'])->name('add-client');
 Route::post('/add-client', [ClientController::class, 'store']);
 
@@ -32,6 +30,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/invoices/{invoice}', [InvoiceController::class, 'show'])->name('invoices.show');
 });
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

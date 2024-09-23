@@ -30,7 +30,27 @@
                                     @endforeach
                                 </ul>
 
-                                <h4>Total: ${{ $invoice->total_amount }}</h4>
+                                <!-- Payroll Fee Checkbox -->
+                                @if (!is_null($invoice->client->payroll_fee))
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input payroll-checkbox" id="payroll-{{ $invoice->id }}" data-payroll="{{ $invoice->client->payroll_fee }}">
+                                        <label class="form-check-label" for="payroll-{{ $invoice->id }}">
+                                            Add Payroll Fee (${{ $invoice->client->payroll_fee }})
+                                        </label>
+                                    </div>
+                                @endif
+
+                                <!-- Bookkeeping Flat Rate Checkbox -->
+                                @if ($invoice->client->is_book_flat_rate)
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input book-rate-checkbox" id="book-rate-{{ $invoice->id }}" data-bookrate="{{ $invoice->client->book_rate }}">
+                                        <label class="form-check-label" for="book-rate-{{ $invoice->id }}">
+                                            Add Bookkeeping Flat Rate (${{ $invoice->client->book_rate }})
+                                        </label>
+                                    </div>
+                                @endif
+
+                                <h4>Total: $<span class="invoice-total" id="total-{{ $invoice->id }}">{{ $invoice->total_amount }}</span></h4>
 
                                 <!-- Delete Client Button -->
                                 <form action="{{ route('delete-client', $invoice->client->id) }}" method="POST" class="d-inline delete-client-form">
@@ -52,6 +72,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         console.log('Script loaded'); 
+
+        // Confirm deletetion
         document.querySelectorAll('.delete-client-form').forEach(function (form) {
             form.addEventListener('submit', function (e) {
                 if (!confirm('Are you sure you want to delete this client? This will also remove their invoices and services.')) {
@@ -59,6 +81,28 @@
                 }
             });
         });
+
+        // Updates total for checkboxes
+        document.querySelectorAll('.payroll-checkbox, .book-rate-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                const invoiceId = this.id.split('-').pop(); 
+                let totalElem = document.getElementById(`total-${invoiceId}`);
+                let currentTotal = parseFloat(totalElem.textContent);
+
+                if (this.classList.contains('payroll-checkbox')) {
+                    let payrollFee = parseFloat(this.dataset.payroll);
+                    currentTotal = this.checked ? currentTotal + payrollFee : currentTotal - payrollFee;
+                }
+        
+                if (this.classList.contains('book-rate-checkbox')) {
+                    let bookRate = parseFloat(this.dataset.bookrate);
+                    currentTotal = this.checked ? currentTotal + bookRate : currentTotal - bookRate;
+                }
+
+                totalElem.textContent = currentTotal;
+            });
+        });
     });
 </script>
 @endsection
+

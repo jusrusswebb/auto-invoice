@@ -63,7 +63,13 @@
 
                                 <h4 class="total">Total: $<span class="invoice-total" id="total-{{ $invoice->id }}">{{ $invoice->total_amount }}</span></h4>
 
-                                <!-- Delete Client Button -->
+                                <!-- Generate docx -->
+                                <form action="{{ route('generate-docx', $invoice->client_id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="gttl" value="{{ $invoice->total_amount }}" id="hidden-total-{{ $invoice->id }}">
+                                    <button type="submit" class="btn btn-primary">Generate DOCX</button>
+                                </form>
+                                
 
                             </div>
                         @endforeach
@@ -107,6 +113,8 @@
                 }
 
                 totalElem.textContent = currentTotal;
+                document.getElementById(`hidden-total-${invoiceId}`).value = currentTotal;
+                
             });
         });
     });

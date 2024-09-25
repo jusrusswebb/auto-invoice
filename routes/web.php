@@ -5,6 +5,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ClientDashboardController;
+use App\Http\Controllers\DocumentController;
 
 Route::get('/', function () {
     return redirect()->route('add-service');
@@ -25,6 +26,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/client-dashboard', [ClientDashboardController::class, 'index'])->name('client-dashboard');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::post('/generate-docx/{clientId}', [DocumentController::class, 'generateDocx'])->name('generate-docx');
+    Route::post('/update-invoice-total', [InvoiceController::class, 'updateTotal'])->name('update.invoice.total');
 });
 
 

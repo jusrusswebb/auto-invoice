@@ -11,6 +11,7 @@
 
  /*!
     Bruh i'm not that good at this
+    sudo mv composer.phar /usr/local/bin/composer
  */
 
 :root {
@@ -69,6 +70,7 @@ nav,
 section {
   display: block;
 }
+
 
 body {
   margin: 0;
@@ -10935,4 +10937,8 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+
+.try{
+  background-color: blue;
 }

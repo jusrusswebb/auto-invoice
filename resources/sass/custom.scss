@@ -1,0 +1,184 @@
+body{
+  background-image: url('../images/gradient.svg');
+}
+
+.logo {
+  background-image: url('../images/logo2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 50px;
+  display: inline-block;
+}
+
+//Log Hours Page
+
+.wholealign{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+}
+
+.wtitles{
+  color: #573381;
+  font-family: 'open sans', sans-serif;
+  font-weight: 600;
+  padding: 2em;
+  font-size: 25px;
+  border: none;
+
+}
+
+.rowstyle{
+  padding-bottom: 2rem;
+}
+
+.droptry{
+  background-color: #F1F1F1;
+  border: 1px solid #C8C8C8;
+
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+ // filter: drop-shadow(3px 3px 40px);
+
+}
+
+.descript{
+  height: 150%;
+}
+
+.subbutton{
+  background-color: #CA4A94;
+  color: white;
+  border: none;
+  font-size: 30px;
+  font-family: 'open sans', sans-serif;
+  font-weight: 500;
+  width: 10em;
+  height: 90%;
+}
+.subpad{
+  padding-top: 3em;
+}
+
+.subbutton:hover{
+  background-color: white;
+  box-shadow: inset 0 0 0 4px #CA4A94;
+  color: #CA4A94;
+  transition: 0.5s;
+
+}
+
+.logtitle{
+  color: white;
+  font-family: 'open sans', sans-serif;
+  font-weight: bold;
+  padding-bottom: 1em;
+}
+
+.labtry{
+  justify-self: center;
+}
+
+.wcard{
+  border-radius: 40px;
+  box-shadow: 10px 13px 13px  rgba(0, 0, 0, 0.268);
+  background-color: white;
+}
+
+
+//Login Page
+.namebar{
+  border: 3px solid #CA4A94;
+  border-radius: 12px;
+  width: 100%;
+  color:#573381;
+  font-family: 'open sans', sans-serif;
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+//add client page
+.clientpad{
+  padding-bottom: 3rem;
+}
+
+.pinkcheck{
+  margin-left: 1rem;
+  box-shadow: 2px 3px 3px  rgba(0, 0, 0, 0.15);
+  border: 1px solid #C8C8C8; /* Hot pink */
+}
+
+.pinkcheck:hover {
+  border-color: #CA4A94; /* Slightly lighter pink */
+}
+
+.pinkcheck:active {
+  background-color: #CA4A94; /* Slightly lighter pink when active */
+}
+
+.pinkcheck:checked {
+  background-color: #CA4A94; /* Hot pink */
+  border-color: #CA4A94;     /* Matching border color */
+}
+
+.droptry2{
+  background-color: #F1F1F1;
+  border: 1px solid #C8C8C8;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 11px;
+ // filter: drop-shadow(3px 3px 40px);
+}
+
+.addtitle{
+  padding-top: 2rem;
+}
+
+.astuff{
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
+}
+
+.clienttitle{
+  color:#573381;
+  font-weight: 700;
+  font-family: 'open sans', sans-serif;
+  font-weight: bold;
+}
+
+.clientcard{
+  border-radius: 30px;
+  box-shadow: 5px 6px 10px  rgba(0, 0, 0, 0.10);
+  background-color: #F1F1F1;
+}
+
+.total{
+  text-align: right;
+  color:#573381;
+  font-weight: 700;
+  font-family: 'open sans', sans-serif;
+  font-weight: bold;
+}
+
+.clientname{
+  font-weight: bold;
+}
+
+.servicetitle{
+  font-weight: bold;
+}
+
+.billadd{
+  font-weight: normal;
+}
+
+.serviceitem{
+  font-weight: normal;
+  font-size: 20px;
+}

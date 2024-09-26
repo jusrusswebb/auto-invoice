@@ -39,11 +39,9 @@ body{
 .droptry{
   background-color: #F1F1F1;
   border: 1px solid #C8C8C8;
-
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
   border-radius: 11px;
  // filter: drop-shadow(3px 3px 40px);
-
 }
 
 .descript{
@@ -158,6 +156,19 @@ body{
   background-color: #F1F1F1;
 }
 
+.searchtitle{
+  color:#573381;
+  font-weight: 700;
+  font-family: 'open sans', sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.padsearch{
+  padding-right: 10rem;
+  padding-left: 10rem;
+}
+
 .total{
   text-align: right;
   color:#573381;
@@ -182,3 +193,74 @@ body{
   font-weight: normal;
   font-size: 20px;
 }
+
+.right-align {
+  padding-top: 0.5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delpink{
+  background-color: #CA4A94; /* Hot pink */
+  border-color: #CA4A94; 
+}
+
+.delpink:hover {
+  background-color: #CA4A94; /* Slightly lighter pink */
+  border-color: #CA4A94; /* Slightly lighter pink */
+}
+
+.searchclidash{
+  font-family: 'open sans', sans-serif !important;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+//add service page
+
+.select2-container--default .select2-selection--single {
+  background-color: #F1F1F1 !important;
+  border: 1px solid #C8C8C8 !important;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 11px !important;
+}
+
+.titlesc{
+  color: #573381 !important;
+  font-family: 'open sans', sans-serif;
+  font-weight: 500;
+  padding: 2em;
+  font-size: 25px;
+  border: none;
+}
+
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+  color: #573381;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+}
+
+
+/* Style the select2 options */
+.select2-container--default .select2-results__option {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  padding: 10px; /* Customize the padding */
+  font-weight: 500;
+}
+
+.select2-container--default .select2-results__option--highlighted {
+  background-color: #CA4A94 !important; /* Set purple as the hover background */
+   /* Set the text color to white for better contrast */
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  color: #3a3a3a !important; /* Change text color */
+  font-weight: 500; /* Make the text bold */
+  font-size: 15px; /* Adjust font size */
+  font-family: 'Open Sans', sans-serif; /* Set custom font */
+}
+
+

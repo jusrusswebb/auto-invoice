@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card-header "><h1 class="addtitle logtitle">{{ __('Client Dashboard: ') }}{{ now()->toFormattedDateString() }}</h1></div>
+    <div class="card-header "><h1 class="addtitle logtitle">{{ __('Client Dashboard: ') }}{{ now()->setTimezone('America/Los_Angeles')->toFormattedDateString(); }}</h1></div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card wcard">
@@ -67,6 +67,8 @@
                                 <form action="{{ route('generate-docx', $invoice->client_id) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="gttl" value="{{ $invoice->total_amount }}" id="hidden-total-{{ $invoice->id }}">
+                                    <input type="hidden" name="isPayrollChecked" id="isPayrollChecked-{{ $invoice->id }}" value="false">
+                                    <input type="hidden" name="isBookRateChecked" id="isBookRateChecked-{{ $invoice->id }}" value="false">
                                     <button type="submit" class="btn btn-primary">Generate DOCX</button>
                                 </form>
                                 
@@ -101,14 +103,21 @@
                 const invoiceId = this.id.split('-').pop(); 
                 let totalElem = document.getElementById(`total-${invoiceId}`);
                 let currentTotal = parseFloat(totalElem.textContent);
+                let payrollInput = document.getElementById(`isPayrollChecked-${invoiceId}`);
+                let bookRateInput = document.getElementById(`isBookRateChecked-${invoiceId}`);
 
                 if (this.classList.contains('payroll-checkbox')) {
                     let payrollFee = parseFloat(this.dataset.payroll);
+                    let isPayrollChecked = this.checked;
+                    payrollInput.value = isPayrollChecked; 
                     currentTotal = this.checked ? currentTotal + payrollFee : currentTotal - payrollFee;
+                    
                 }
         
                 if (this.classList.contains('book-rate-checkbox')) {
                     let bookRate = parseFloat(this.dataset.bookrate);
+                    let isBookRateChecked = this.checked;
+                    bookRateInput.value = isBookRateChecked; 
                     currentTotal = this.checked ? currentTotal + bookRate : currentTotal - bookRate;
                 }
 

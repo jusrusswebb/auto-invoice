@@ -29,17 +29,29 @@ class DocumentController extends Controller
         $templateProcessor->setValue('gttl', number_format($totalAmount, 2));
 
         $invoice = $client->invoices->first(); 
+        $serviceCount = $invoice->services->count();
+        if($serviceCount == 0){
+            if($client->is_book_flat_rate){
+                $templateProcessor->setValue("desc_1", "Monthly Bookkeeping Service");
+                $templateProcessor->setValue("ttl_1", $client->book_rate);
+                $templateProcessor->setValue("hrs_1", '');
+                $serviceCount == 1;
+            }  
+        }
 
         if ($invoice) {
             foreach ($invoice->services as $index => $service) {
                 $placeholderIndex = $index + 1;
                 $templateProcessor->setValue("desc_{$placeholderIndex}", $service->description);
-                $templateProcessor->setValue("ttl_{$placeholderIndex}", number_format($service->service_amount, 2));
+                if($client->is_book_flat_rate){
+                    $templateProcessor->setValue("ttl_{$placeholderIndex}", 'flat rate');
+                }
+                else{
+                    $templateProcessor->setValue("ttl_{$placeholderIndex}", number_format($service->service_amount, 2));
+                }
                 $templateProcessor->setValue("hrs_{$placeholderIndex}", $service->hours_worked . ' hours');
             }
         }
-
-        $serviceCount = $invoice->services->count();
         $maxServices = 4; 
         for ($i = $serviceCount + 1; $i <= $maxServices; $i++) {
             $templateProcessor->setValue("desc_{$i}", '');

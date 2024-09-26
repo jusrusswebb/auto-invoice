@@ -7,6 +7,15 @@
         <div class="col-md-12">
             <div class="card wcard">
                 
+                <!-- Search Form -->
+                <div class="row justify-content-center my-4">
+                    <div class="padsearch">
+                        <form action="{{ route('search-client') }}" method="GET" class="d-flex">
+                            <input type="text" name="query" class="form-control me-2 droptry2 searchclidash" placeholder="Search clients..." value="{{ request()->input('query') }}">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
+                    </div>
+                </div>
 
                 <div class="card-body ">
                     @if ($invoices->isEmpty())
@@ -20,7 +29,7 @@
                                 <form action="{{ route('delete-client', $invoice->client->id) }}" method="POST" class="delete-client-form">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete Client</button>
+                                    <button type="submit" class="btn btn-danger btn-sm delpink">Delete Client</button>
                                 </form>
                             </div>
 
@@ -35,7 +44,7 @@
                                             <form action="{{ route('delete-service', $service->id) }}" method="POST" class="d-inline delete-service-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm delpink">Delete</button>
                                             </form>
                                         </li>
                                     @endforeach
@@ -64,7 +73,7 @@
                                 <h4 class="total">Total: $<span class="invoice-total" id="total-{{ $invoice->id }}">{{ $invoice->total_amount }}</span></h4>
 
                                 <!-- Generate docx -->
-                                <form action="{{ route('generate-docx', $invoice->client_id) }}" method="POST">
+                                <form action="{{ route('generate-docx', $invoice->client_id) }}" method="POST" class="right-align">
                                     @csrf
                                     <input type="hidden" name="gttl" value="{{ $invoice->total_amount }}" id="hidden-total-{{ $invoice->id }}">
                                     <input type="hidden" name="isPayrollChecked" id="isPayrollChecked-{{ $invoice->id }}" value="false">

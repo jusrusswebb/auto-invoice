@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::post('/generate-docx/{clientId}', [DocumentController::class, 'generateDocx'])->name('generate-docx');
     Route::post('/update-invoice-total', [InvoiceController::class, 'updateTotal'])->name('update.invoice.total');
+    Route::get('/search-client', [ClientDashboardController::class, 'search'])->name('search-client');//new 
+
 });
 
 

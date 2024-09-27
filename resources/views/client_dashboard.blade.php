@@ -10,8 +10,8 @@
                 <!-- Search Form -->
                 <div class="row justify-content-center my-4">
                     <div class="padsearch">
-                        <form action="{{ route('search-client') }}" method="GET" class="d-flex">
-                            <input type="text" name="query" class="form-control me-2 droptry2 searchclidash" placeholder="Search clients..." value="{{ request()->input('query') }}">
+                        <form action="{{ route('search-client') }}" method="GET" class="d-flex justify-content-center">
+                            <input type="text" name="query" class="form-control me-2 droptry2 searchclidash"  placeholder="Search clients..." value="{{ request()->input('query') }}">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </form>
                     </div>

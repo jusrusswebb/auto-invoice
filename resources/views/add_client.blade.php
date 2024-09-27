@@ -1,9 +1,7 @@
-<!-- resources/views/admin/add_client.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid"> <!-- Use container-fluid for full width scaling -->
 
     @if (session('success'))
         <div class="alert alert-success">
@@ -11,10 +9,10 @@
         </div>
     @endif
 
-    <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-        <h1 class="logtitle addtitle">Add New Client</h1>
+        <div class="col-lg-6 col-md-8 col-12"> <!-- Adjust for larger screens and mobile -->
+            <h1 class="logtitle addtitle text-center">Add New Client</h1> <!-- Centered title for mobile friendliness -->
+            
             <form method="POST" class="wcard wtitles" action="{{ route('add-client') }}">
                 @csrf
 
@@ -52,16 +50,15 @@
 
                 <div class="form-group pb-4">
                     <label for="is_book_flat_rate">Is Book Flat Rate?</label>
-                    <input type="checkbox" class=" form-check-input pinkcheck me-2" id="is_book_flat_rate" name="is_book_flat_rate" value="1">
+                    <input type="checkbox" class="form-check-input pinkcheck me-2" id="is_book_flat_rate" name="is_book_flat_rate" value="1">
                 </div>
 
                 <div class="form-group row mb-0 justify-content-center">
-                    <div class="col-md-8 d-flex justify-content-center">
+                    <div class="col-12 text-center">
                         <button type="submit" class="btn btn-primary subbutton">Add Client</button>
                     </div>
                 </div>
             </form>
-            </div>
         </div>
     </div>
 </div>
